@@ -398,3 +398,15 @@ function licenses_unassign(player, license)
     end
   end
 end
+
+function licenses_exists(license)
+	local table = minetest.deserialize(storage:get_string("licenses:table"))
+	-- Checke, ob das wirklich existiert
+	local exists = false
+	for k, v in pairs(table) do
+		if k == license and v == "defined" then
+			exists = true
+		end
+	end
+	return exists
+end

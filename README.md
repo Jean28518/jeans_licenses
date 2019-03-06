@@ -1,4 +1,4 @@
-# licenses
+# Minetest-Mod: licenses
 Github: https://github.com/Jean28518/minetest_licenses
 
 This mod is adding an ingame license system for multiplayers to Minetest.
@@ -52,3 +52,5 @@ You can also combine this mod with your own mod:
 `licenses_assign(player, license)` Returns true, if License where successfully assigned. Otherwise returns false.
 
 `licenses_unassign(player, license)` Returns true, if License where successfully unassigned. Otherwise returns false.
+
+`licenses_exists(license)` Returns true, if this license is in database. Otherwise returns false
