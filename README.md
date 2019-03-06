@@ -43,14 +43,16 @@ Get the latest time, on which a player where assigned to an license.
 ## Minetest Functions for Developers:
 You can also combine this mod with your own mod:
 
-`licenses_check_player_by_licese(player, license)` Returns true, if License is currently assigned to the player. Otherwise returns false.
+`licenses_add(license)` Adds a license to the database.
 
-`licenses_check_player_license_time(player, license)` Returns the gametime, on which the license was assigned to the player.
+`licenses_check_player_by_licese(player_name, license)` Returns true, if License is currently assigned to the player. Otherwise returns false.
 
-`function licenses_check_player_license_time(player)` Returns the latest gametime, on that a player got assigned with any license.
+`licenses_check_player_license_time(player_name, license)` Returns the gametime, on which the license was assigned to the player.
 
-`licenses_assign(player, license)` Returns true, if License where successfully assigned. Otherwise returns false.
+`function licenses_check_player_license_time(player_name)` Returns the latest gametime, on that a player got assigned with any license.
 
-`licenses_unassign(player, license)` Returns true, if License where successfully unassigned. Otherwise returns false.
+`licenses_assign(player_name, license)` Returns true, if License where successfully assigned. Otherwise returns false.
+
+`licenses_unassign(player_name, license)` Returns true, if License where successfully unassigned. Otherwise returns false.
 
 `licenses_exists(license)` Returns true, if this license is in database. Otherwise returns false

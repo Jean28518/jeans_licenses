@@ -410,3 +410,17 @@ function licenses_exists(license)
 	end
 	return exists
 end
+
+function licenses_add(license)
+	local table = minetest.deserialize(storage:get_string("licenses:table"))
+	if license == "" then
+		print("licenses_define: Correct use: licenses_add <license_name>")
+	else
+		if table == nil then
+			table = {}
+		end
+		table[license] = "defined"
+		storage:set_string("licenses:table", minetest.serialize(table))
+		print("Successfully added License: " .. license)
+	end
+end
