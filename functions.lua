@@ -70,7 +70,6 @@ function licenses.check(player, license)
 	if playerLicenses[player][license] ~= nil and playerLicenses[player][license] == true then
 		return true
 	else
-
 		return false
 	end
 end
