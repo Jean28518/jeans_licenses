@@ -1,58 +1,60 @@
-# Minetest-Mod: licenses
+# Minetest-Mod: Jeans Licenses
 Github: https://github.com/Jean28518/minetest_licenses
 
-This mod is adding an ingame license system for multiplayers to Minetest.
-
-**Licenses can only read and wrote to the player, when the specific player is online, because of the use of `player:get_meta()`.**
+This mod is adding an ingame license system for servers to minetest.
+Its an alternative to the minetest-priv system. Its for ingame features. E.g. for a drivers license or something else.
 
 ----
 
-## Chat-Commands:
-`licenses`
-List all commands.
+## Commands:
+`/help license` Display all other commands
 
- `licenses_list`
-List all defined licenses.
+`/license add <license>` Add License to the database.
 
-`licenses_add LICENSE`
-Add new license to database. 'licenses' attribut required.
+`/license delete <license>` Delete License from the database.
 
- `licenses_remove LICENSE`
-Remove license from database. 'licenses' attribut required.
+`/license assign <player> <license>` Assign a player some license.
 
- `licenses_assign PLAYERNAME LICENSE`
-Assign a defined license to a player. 'licenses' attribut required.
+`/license revoke <player> <license>` Revoke a player some license.
 
- `licenses_unassign PLAYERNAME LICENSE`
-Unassign a defined license to a player 'licenses' attribut required.
+`/license list <player>` See all license of a player.
 
- `licenses_see PLAYERNAME`
-List all assigned licenses and each assign-gametime the  of a player.
-
- `licenses_check PLAYERNAME LICENSE`
-Returns, if license is currently assigned to player.
-
- `licenses_get_license_time PLAYERNAME LICENSE`
-Get assigntime of an assigned License from a player.
-
- `licenses_get_last_assigntime PLAYERNAME`
-Get the latest time, on which a player where assigned to an license.
+`/license list` See all existing licenses on the server.
 
 ----
 
 ## Minetest Functions for Developers:
 You can also combine this mod with your own mod:
 
-`licenses_add(license)` Adds a license to the database.
+`licenses.add(license)` Add a license to the database. Return true, if it was sucessfully done. Returns false, if error ocurred, or license is in database already.
 
-`licenses_check_player_by_licese(player_name, license)` Returns true, if License is currently assigned to the player. Otherwise returns false.
+`licenses.delete(license)` Deletes a license from the database. Returns true, if it was sucessfully done. Returns false, if error ocurred, or the license doenst exist.
 
-`licenses_check_player_license_time(player_name, license)` Returns the gametime, on which the license was assigned to the player.
+`licenses.exists(license)` Returns true, if the license exists in the database. Returns false, if it isn't.
 
-`function licenses_check_player_license_time(player_name)` Returns the latest gametime, on that a player got assigned with any license.
+`licenses.assign(player_name, license)` Assigns a Player an license. Returns true, if sucessfully done. Returns false, if the license or the player doesnt exist.
 
-`licenses_assign(player_name, license)` Returns true, if License where successfully assigned. Otherwise returns false.
+`license.revoke(player_name, license)` Revokes a license from a player. Returns true, if sucessfully done. Returns false, if the license or the player doesnt exist.
 
-`licenses_unassign(player_name, license)` Returns true, if License where successfully unassigned. Otherwise returns false.
+`licenses.check(player_name, license)` Returns true, if the player has the license assigned. Returns false if not, or the player or the license doesnt exist.
 
-`licenses_exists(license)` Returns true, if this license is in database. Otherwise returns false
+`licenses.list_all()` Returns a String with all licenses listed in the database. When the database is empty, it returns an empty String like `""`
+
+`licenses.player_list(player_name)` Returns a string with all licenses which are assigned to a specific player. It returns an empty String when the player has no licenses assigned. When the player doenst exist, it returns false.
+
+**The mod doenst handle assign times anymore!**
+
+### Old deprecated Functions:
+*`licenses_add(license)` Adds a license to the database.*
+
+*`licenses_check_player_by_licese(player_name, license)` Returns true, if License is currently assigned to the player. Otherwise returns false.*
+
+*`licenses_check_player_license_time(player_name, license)` Returns the gametime, on which the license was assigned to the player.*
+
+*`function licenses_check_player_license_time(player_name)` Returns the latest gametime, on that a player got assigned with any license.*
+
+*`licenses_assign(player_name, license)` Returns true, if License where successfully assigned. Otherwise returns false.*
+
+*`licenses_unassign(player_name, license)` Returns true, if License where successfully unassigned. Otherwise returns false.*
+
+*`licenses_exists(license)` Returns true, if this license is in database. Otherwise returns false*
