@@ -67,9 +67,11 @@ function licenses.check(player, license)
     storage:set_string("playerLicenses", minetest.serialize(playerLicenses))
     return false
   end
+  minetest.chat_send_all("")
 	if playerLicenses[player][license] ~= nil and playerLicenses[player][license] == true then
 		return true
 	else
+
 		return false
 	end
 end
