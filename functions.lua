@@ -44,7 +44,7 @@ function licenses.assign(player, license)
 	if not licenses.exists(license) or not minetest.player_exists(player)  then return false end
 	local playerLicenses = minetest.deserialize(storage:get_string("playerLicenses"))
 	playerLicenses[player] = playerLicenses[player] or {}
-	playerLicenses[player][license] = minetest.get_gametime()
+	playerLicenses[player][license] = true
 	storage:set_string("playerLicenses", minetest.serialize(playerLicenses))
 	return true
 end
@@ -67,9 +67,11 @@ function licenses.check(player, license)
     storage:set_string("playerLicenses", minetest.serialize(playerLicenses))
     return false
   end
+  minetest.chat_send_all("")
 	if playerLicenses[player][license] ~= nil and playerLicenses[player][license] == true then
 		return true
 	else
+
 		return false
 	end
 end
